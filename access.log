@@ -1,0 +1,92 @@
+server error: Fri Dec 02 2022 11:32:38 GMT+0000 (Greenwich Mean Time) [
+  {
+    "error": "error"
+  }
+]
+ 
+server error: Fri Dec 02 2022 11:34:20 GMT+0000 (Greenwich Mean Time) [
+  {
+    "error": "error"
+  }
+]
+ 
+funciton check: 27/01/232023 16:53 function () {
+        console.log("Hello, world!");
+    }
+ 
+symbol check: 27/01/232023 16:53 Symbol(example)
+ 
+funciton check: 27/01/232023 16:54 function () {
+        console.log("Hello, world!");
+    }
+ 
+symbol check: 27/01/232023 16:54 Symbol(example)
+ 
+obj check: 27/01/232023 16:54 {
+  "check": 1
+}
+ 
+EMAIL CATCH ERROR:: 02/02/232023 08:59 {
+  "name": "SequelizeConnectionRefusedError",
+  "parent": {
+    "errno": -61,
+    "code": "ECONNREFUSED",
+    "syscall": "connect",
+    "address": "127.0.0.1",
+    "port": 8889,
+    "fatal": true
+  },
+  "original": {
+    "errno": -61,
+    "code": "ECONNREFUSED",
+    "syscall": "connect",
+    "address": "127.0.0.1",
+    "port": 8889,
+    "fatal": true
+  }
+}
+ 
+EMAIL CATCH ERROR:: 02/02/232023 09:23 {
+  "name": "SequelizeConnectionRefusedError",
+  "parent": {
+    "errno": -61,
+    "code": "ECONNREFUSED",
+    "syscall": "connect",
+    "address": "127.0.0.1",
+    "port": 8889,
+    "fatal": true
+  },
+  "original": {
+    "errno": -61,
+    "code": "ECONNREFUSED",
+    "syscall": "connect",
+    "address": "127.0.0.1",
+    "port": 8889,
+    "fatal": true
+  }
+}
+ 
+Create Lead Catch: 16/05/232023 12:41 {"name":"SequelizeDatabaseError","parent":{"code":"ER_TRUNCATED_WRONG_VALUE","errno":1292,"sqlState":"22007","sqlMessage":"Incorrect datetime value: 'Invalid date' for column 'dob' at row 1","sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`firstName`,`lastName`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?);","parameters":["220142b7-52e7-4961-a5b1-e5a8aa55a399","v1","Aris","Ceka","Invalid date","2023-05-16 11:41:28","2023-05-16 11:41:28"]},"sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`firstName`,`lastName`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?);"}
+ 
+Create Lead Catch: 16/05/232023 12:43 {"name":"SequelizeDatabaseError","parent":{"code":"ER_TRUNCATED_WRONG_VALUE","errno":1292,"sqlState":"22007","sqlMessage":"Incorrect datetime value: 'Invalid date' for column 'dob' at row 1","sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`firstName`,`lastName`,`phone`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?);","parameters":["57b23869-8c92-4e24-a2f6-5c550e8aed55","v1","Aris","Ceka","07708405389","Invalid date","2023-05-16 11:43:20","2023-05-16 11:43:20"]},"sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`firstName`,`lastName`,`phone`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?);"}
+ 
+Create Lead Catch: 16/05/232023 12:43 {"name":"SequelizeDatabaseError","parent":{"code":"ER_TRUNCATED_WRONG_VALUE","errno":1292,"sqlState":"22007","sqlMessage":"Incorrect datetime value: 'Invalid date' for column 'dob' at row 1","sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`firstName`,`lastName`,`phone`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?);","parameters":["77aabd33-9847-48e7-852c-a0a53c7529af","v1","Aris","Ceka","07708405389","Invalid date","2023-05-16 11:43:35","2023-05-16 11:43:35"]},"sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`firstName`,`lastName`,`phone`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?);"}
+ 
+Create Lead Catch: 16/05/232023 12:45 {"name":"SequelizeDatabaseError","parent":{"code":"ER_NO_DEFAULT_FOR_FIELD","errno":1364,"sqlState":"HY000","sqlMessage":"Field 'stage' doesn't have a default value","sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`firstName`,`lastName`,`phone`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?);","parameters":["fcc2830c-9250-49e2-8920-719756fe4c2c","v1","Aris","Ceka","07708405389","21/02/2022","2023-05-16 11:45:45","2023-05-16 11:45:45"]},"sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`firstName`,`lastName`,`phone`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?);"}
+ 
+Create Lead Catch: 16/05/232023 12:46 {"name":"SequelizeDatabaseError","parent":{"code":"ER_NO_DEFAULT_FOR_FIELD","errno":1364,"sqlState":"HY000","sqlMessage":"Field 'stage' doesn't have a default value","sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`firstName`,`lastName`,`phone`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?);","parameters":["ceb5dc6d-d6ca-4a28-b097-551969fd07f4","v1","Aris","Ceka","07708405389","21/02/2022","2023-05-16 11:46:38","2023-05-16 11:46:38"]},"sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`firstName`,`lastName`,`phone`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?);"}
+ 
+Create Lead Catch: 16/05/232023 12:46 {"name":"SequelizeDatabaseError","parent":{"code":"ER_NO_DEFAULT_FOR_FIELD","errno":1364,"sqlState":"HY000","sqlMessage":"Field 'email' doesn't have a default value","sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`stage`,`firstName`,`lastName`,`phone`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?);","parameters":["0932b2b1-ff3c-4fd4-9635-c32807d9dc76","v1",1,"Aris","Ceka","07708405389","21/02/2022","2023-05-16 11:46:58","2023-05-16 11:46:58"]},"sql":"INSERT INTO `Leads` (`id`,`uuid`,`version`,`stage`,`firstName`,`lastName`,`phone`,`dob`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?);"}
+ 
+Append SpreadSheet Values 1 Err:: 16/05/232023 12:48 {}
+ 
+Catch Error Message GS:: 16/05/232023 12:48 Add lead to Google Issue error.
+ 
+Append SpreadSheet Values 1 Err:: 16/05/232023 12:53 {}
+ 
+Catch Error Message GS:: 16/05/232023 12:53 Add lead to Google Issue error.
+ 
+Append SpreadSheet Values 1 Err:: 16/05/232023 12:53 {}
+ 
+Catch Error Message GS:: 16/05/232023 12:53 Add lead to Google Issue error.
+ 

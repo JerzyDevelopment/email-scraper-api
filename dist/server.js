@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 // Routes
-var lead_1 = __importDefault(require("./routes/lead"));
+var routes_1 = __importDefault(require("./routes"));
 var app = (0, express_1.default)();
 var port = process.env.PORT || 3001;
 var body_parser_1 = __importDefault(require("body-parser"));
@@ -16,7 +16,7 @@ dotenv_1.default.config();
 var NODE_CORS_ALLOWED = process.env.NODE_CORS_ALLOWED;
 var ARRAY_NODE_CORS_ALLOWED = NODE_CORS_ALLOWED === null || NODE_CORS_ALLOWED === void 0 ? void 0 : NODE_CORS_ALLOWED.split(",");
 var corsOptions = {
-    origin: ARRAY_NODE_CORS_ALLOWED,
+    origin: "http://localhost:3000",
     optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
@@ -26,7 +26,7 @@ app.get("/", function (req, res) {
     // res.sendFile("./misc/index.html", { root: __dirname });
     res.status(200).json({ message: "Hello World!" });
 });
-app.use(lead_1.default);
+app.use(routes_1.default);
 // Needs to be after api routes
 // app.use(errorHandler);
 app.listen(port, function () {

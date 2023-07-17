@@ -1,9 +1,8 @@
-import { Router } from "express";
+import {Router} from "express";
 import form from "../controllers";
 
 const router = Router();
 
-
-router.get("/:url", form.scrapeUrl);
+router.post("/:url", form.scrapeUrl);
 
 export default router;

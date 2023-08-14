@@ -50,29 +50,33 @@ function scrapeUrl(req, res, next) {
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
-                    _b.trys.push([0, 3, , 4]);
+                    _b.trys.push([0, 2, , 3]);
                     console.log("Inside scrape url controller");
                     url = (_a = req.body) === null || _a === void 0 ? void 0 : _a.url;
                     console.log("URL to scrape: " + url);
                     return [4 /*yield*/, (0, getHtml_1.default)(url)];
                 case 1:
                     data = _b.sent();
-                    return [4 /*yield*/, (0, generateCsv_1.default)(data)];
-                case 2:
-                    _b.sent();
-                    res.send({
-                        success: true,
+                    (0, generateCsv_1.default)(data)
+                        .then(function (fileData) {
+                        res.setHeader("Content-Type", "text/csv");
+                        res.setHeader("Content-Disposition", "attachment; filename=emails.csv");
+                        res.send(fileData);
+                    })
+                        .catch(function (error) {
+                        console.error("Error generating CSV file:", error);
+                        res.status(500).send("Failed to generate CSV file.");
                     });
-                    return [3 /*break*/, 4];
-                case 3:
+                    return [3 /*break*/, 3];
+                case 2:
                     err_1 = _b.sent();
                     console.log("Error in func" + err_1);
                     res.status(400).send({
                         success: false,
                         message: err_1,
                     });
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });

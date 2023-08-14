@@ -17,7 +17,7 @@ const NODE_CORS_ALLOWED = process.env.NODE_CORS_ALLOWED;
 const ARRAY_NODE_CORS_ALLOWED = NODE_CORS_ALLOWED?.split(",");
 
 const corsOptions = {
-  origin: "",
+  origin: "https://jerzy-email-scraper.netlify.app",
   optionsSuccessStatus: 200,
 };
 

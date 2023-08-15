@@ -17,7 +17,7 @@ const NODE_CORS_ALLOWED = process.env.NODE_CORS_ALLOWED;
 const ARRAY_NODE_CORS_ALLOWED = NODE_CORS_ALLOWED?.split(",");
 
 const corsOptions = {
-  origin: process.env.NODE_CORS_ALLOWED,
+  origin: ARRAY_NODE_CORS_ALLOWED,
   optionsSuccessStatus: 200,
 };
 

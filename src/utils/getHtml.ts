@@ -7,7 +7,10 @@ function extractEmails(text: any) {
 }
 
 const getHtml = async (url: string) => {
-  const browser = await puppeteer.launch({headless: true});
+  const browser = await puppeteer.launch({
+    headless: false,
+    args: ["--no-sandbox"],
+  });
   const page = await browser.newPage();
 
   await page.goto(url, {timeout: 30000, waitUntil: "load"});

@@ -16,7 +16,7 @@ dotenv_1.default.config();
 var NODE_CORS_ALLOWED = process.env.NODE_CORS_ALLOWED;
 var ARRAY_NODE_CORS_ALLOWED = NODE_CORS_ALLOWED === null || NODE_CORS_ALLOWED === void 0 ? void 0 : NODE_CORS_ALLOWED.split(",");
 var corsOptions = {
-    origin: process.env.NODE_CORS_ALLOWED,
+    origin: ARRAY_NODE_CORS_ALLOWED,
     optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));

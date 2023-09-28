@@ -1,40 +1,52 @@
-import express, {Request, Response, Express} from "express";
+import generateCsv from "./utils/generateCsv";
+import getHtml from "./utils/getHtml";
+const fs = require("fs");
 
-// Routes
-import lead from "./routes";
-const app: Express = express();
+function listDirectoryContents(path: any) {
+  try {
+    return fs.readdirSync(path);
+  } catch (error: any) {
+    return `Error reading directory ${path}: ${error.message}`;
+  }
+}
 
-const port = process.env.PORT || 3001;
-import bodyParser from "body-parser";
-import dotenv from "dotenv";
+module.exports.handler = async (event: any, context: any, callback: any) => {
+  try {
+    console.log("Inside scrape url controller");
 
-const cors = require("cors");
+    console.log("Contents of /opt:", listDirectoryContents("/opt"));
+    console.log(
+      "Contents of /opt/nodejs/node_modules:",
+      listDirectoryContents("/opt/nodejs/node_modules")
+    );
 
-dotenv.config();
+    const url = event?.url;
 
-// Cors
-const NODE_CORS_ALLOWED = process.env.NODE_CORS_ALLOWED;
-const ARRAY_NODE_CORS_ALLOWED = NODE_CORS_ALLOWED?.split(",");
+    console.log("URL to scrape: " + url);
 
-const corsOptions = {
-  origin: ARRAY_NODE_CORS_ALLOWED,
-  optionsSuccessStatus: 200,
+    const data: any = await getHtml(url);
+
+    return generateCsv(data)
+      .then((fileData) => {
+        // res.setHeader("Content-Type", "text/csv");
+        // res.setHeader("Content-Disposition", "attachment; filename=emails.csv");
+
+        // res.send(fileData);
+
+        const response = {
+          statusCode: 200,
+          body: JSON.stringify({msg: "Hello from lambda"}),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+        return response;
+      })
+      .catch((error) => {
+        console.error("Error generating CSV file:", error);
+        // res.status(500).send("Failed to generate CSV file.");
+      });
+  } catch (err) {
+    console.log("Error in func" + err);
+  }
 };
-
-app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
-app.get("/", (req: Request, res: Response) => {
-  // res.sendFile("./misc/index.html", { root: __dirname });
-  res.status(200).json({message: "Hello World!"});
-});
-
-app.use(lead);
-
-// Needs to be after api routes
-// app.use(errorHandler);
-
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
-});

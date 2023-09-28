@@ -35,43 +35,70 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var puppeteer_1 = __importDefault(require("puppeteer"));
+var chromium = require("chrome-aws-lambda");
 function extractEmails(text) {
     console.log(text, "TEXT");
     var emailRegEx = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b/g;
     return text.match(emailRegEx);
 }
 var getHtml = function (url) { return __awaiter(void 0, void 0, void 0, function () {
-    var browser, page, data, emails;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, puppeteer_1.default.launch({ headless: true })];
+    var browser, emails, _a, _b, page, data, error_1;
+    var _c;
+    return __generator(this, function (_d) {
+        switch (_d.label) {
+            case 0:
+                console.log("1");
+                browser = null;
+                emails = [];
+                _d.label = 1;
             case 1:
-                browser = _a.sent();
-                return [4 /*yield*/, browser.newPage()];
-            case 2:
-                page = _a.sent();
-                return [4 /*yield*/, page.goto(url, { timeout: 30000, waitUntil: "load" })];
+                _d.trys.push([1, 8, 9, 12]);
+                _b = (_a = chromium.puppeteer).launch;
+                _c = {
+                    args: chromium.args,
+                    defaultViewport: chromium.defaultViewport
+                };
+                return [4 /*yield*/, chromium.executablePath];
+            case 2: return [4 /*yield*/, _b.apply(_a, [(_c.executablePath = _d.sent(),
+                        _c.headless = chromium.headless,
+                        _c)])];
             case 3:
-                _a.sent();
-                return [4 /*yield*/, page.setViewport({ width: 1080, height: 1024 })];
+                browser = _d.sent();
+                console.log("2");
+                return [4 /*yield*/, browser.newPage()];
             case 4:
-                _a.sent();
-                return [4 /*yield*/, page.content()];
+                page = _d.sent();
+                console.log("3");
+                return [4 /*yield*/, page.goto(url, { timeout: 30000, waitUntil: "load" })];
             case 5:
-                data = _a.sent();
-                console.log(data, "page data");
-                emails = extractEmails(data);
-                return [4 /*yield*/, browser.close()];
+                _d.sent();
+                console.log("4");
+                return [4 /*yield*/, page.setViewport({ width: 1080, height: 1024 })];
             case 6:
-                _a.sent();
-                return [2 /*return*/, emails.filter(function (value, index, self) {
-                        return self.indexOf(value) === index;
-                    })];
+                _d.sent();
+                console.log("5");
+                return [4 /*yield*/, page.content()];
+            case 7:
+                data = _d.sent();
+                console.log("6");
+                // Extract all email addresses from the HTML content
+                emails = extractEmails(data);
+                emails = emails.filter(function (value, index, self) { return self.indexOf(value) === index; });
+                console.log("7");
+                return [3 /*break*/, 12];
+            case 8:
+                error_1 = _d.sent();
+                console.error("Error in browser operation:", error_1);
+                return [3 /*break*/, 12];
+            case 9:
+                if (!browser) return [3 /*break*/, 11];
+                return [4 /*yield*/, browser.close()];
+            case 10:
+                _d.sent();
+                _d.label = 11;
+            case 11: return [7 /*endfinally*/];
+            case 12: return [2 /*return*/, emails];
         }
     });
 }); };

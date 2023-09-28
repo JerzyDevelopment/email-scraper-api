@@ -14,10 +14,10 @@ const getHtml = async (url: string) => {
   let emails = [];
   try {
     browser = await chromium.puppeteer.launch({
-   args: chromium.args,
-  defaultViewport: chromium.defaultViewport,
-  executablePath: await chromium.executablePath("/opt/chromium"),
-  headless: chromium.headless,
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
+      headless: chromium.headless,
     });
 
     console.log("2");
